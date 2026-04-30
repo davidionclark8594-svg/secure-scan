@@ -1,0 +1,47 @@
+{
+  "total_mathces": 6,
+  "findings": [
+    {
+      "file": "/Users/davidionclarksr./python-projects/learning/Week1/data/Sample_log.txt",
+      "line": 2,
+      "keyword": "password",
+      "severity": "HIGH",
+      "content": "WARN Failed password attempt user=bob ip=10.0.0.9"
+    },
+    {
+      "file": "/Users/davidionclarksr./python-projects/learning/Week1/data/Sample_log.txt",
+      "line": 5,
+      "keyword": "token",
+      "severity": "HIGH",
+      "content": "WARN admin token exposed: ghp_exampletoken"
+    },
+    {
+      "file": "/Users/davidionclarksr./python-projects/learning/Week1/data/Sample_log.txt",
+      "line": 8,
+      "keyword": "password",
+      "severity": "HIGH",
+      "content": "admin password is secret"
+    },
+    {
+      "file": "/Users/davidionclarksr./python-projects/learning/Week1/data/Sample_log.txt",
+      "line": 9,
+      "keyword": "password_assignment",
+      "severity": "HIGH",
+      "content": "password=12345"
+    },
+    {
+      "file": "/Users/davidionclarksr./python-projects/learning/Week1/data/Sample_log.txt",
+      "line": 3,
+      "keyword": "sql",
+      "severity": "MEDIUM",
+      "content": "ERROR SQL injection attempt detected: ' OR 1=1 --"
+    },
+    {
+      "file": "/Users/davidionclarksr./python-projects/learning/Week1/data/Sample_log.txt",
+      "line": 6,
+      "keyword": "xss",
+      "severity": "MEDIUM",
+      "content": "ERROR XSS payload: <script>alert(1)</script>"
+    }
+  ]
+}
