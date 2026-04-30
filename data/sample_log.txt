@@ -1,0 +1,11 @@
+INFO User login success user=alice ip=10.0.0.5
+WARN Failed password attempt user=bob ip=10.0.0.9
+ERROR SQL injection attempt detected: ' OR 1=1 --
+INFO File uploaded: invoice.pdf
+WARN admin token exposed: ghp_exampletoken
+ERROR XSS payload: <script>alert(1)</script>
+INFO Logout user=alice
+admin password is secret
+password=12345
+
+
