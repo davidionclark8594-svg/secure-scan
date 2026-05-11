@@ -26,7 +26,7 @@ secure-scan/
 
 ⚙️ Installation
 Clone the repository:
-git clone https://github.com/YOUR_USERNAME/secure-scan.git
+git clone https://github.com/davidionclark8594-svg/secure-scan.git
 cd secure-scan
 Create virtual environment (optional but recommended):
 python -m venv venv
