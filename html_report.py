@@ -100,7 +100,7 @@ th {{
             report.write(f"""
 <tr>
 <td>{finding['keyword']}</td>
-<td> class="{finding['severity'].lower()}>{finding['severity']}</td>
+<td class="{finding['severity'].lower()}">{finding['severity']}</td>
 <td>{finding['confidence']}</td>
 <td>{finding.get("owasp", "MISSING")}</td>
 <td>{finding.get("cvss", "MISSING")}</td>
@@ -108,7 +108,7 @@ th {{
 </tr>
 """)
 
-            report.write("""
+        report.write("""
 </table>
 
 </body>
