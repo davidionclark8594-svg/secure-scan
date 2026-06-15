@@ -5,6 +5,12 @@ def write_html_report(report_path, findings, severity_counts, total_findings, ri
     low_count = 0
     owasp_counts = {}
 
+    top_findings = sorted(
+        findings,
+        key=lambda finding: finding.get("cvss", 0),
+        reverse=True
+    )[:5]
+
     for finding in findings:
         severity = finding["severity"]     
 
@@ -125,6 +131,30 @@ th {{
         {risk_level}
     </div>
 </div>
+
+<h2>Top 5 Highest-Risk Findings</h2>
+
+<table>
+<tr>
+    <th>Keyword</th>
+    <th>Severity</th>
+    <th>CVSS</th>
+    <th>File</th>
+</tr>
+
+{"".join(
+    f"""
+    <tr>
+        <td>{finding.get('keyword', '')}</td>
+        <td>{finding.get('severity', '')}</td>
+        <td>{finding.get('cvss', '')}</td>
+        <td>{str(finding.get('file', '')).split('/')[-1]}</td>
+    </tr>
+    """
+    for finding in top_findings
+)}
+
+</table>
 
 <h2>OWASP Categories</h2>
 """)
