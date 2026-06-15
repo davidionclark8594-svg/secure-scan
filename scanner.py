@@ -293,11 +293,6 @@ def main():
          encoding="utf-8"
     )
 
-    write_html_report(
-        html_report_path, 
-        json_findings
-    )
-
     print(f"HTML report saved to: {html_report_path}")
 
     
@@ -318,22 +313,34 @@ def main():
         severity_counts["LOW"] * 1
     )
 
+    total_findings = sum(severity_counts.values())
+
     print(Fore.RED + f"HIGH findings: {severity_counts['HIGH']}")
     print(Fore.YELLOW + f"MEDIUM findings: {severity_counts['MEDIUM']}")
     print(Fore.GREEN + f"LOW findings: {severity_counts['LOW']}")
     print(f"Overall Risk Score: {risk_score}")
 
     if risk_score >= 150:
-        print(Fore.MAGENTA + "Risk Level: CRITICAL")
-
+        risk_level = "CRITICAL"
+        
     elif risk_score >= 75:
-        print(Fore.RED + "Risk Level: HIGH")
-
+        risk_level = "HIGH"
+       
     elif risk_score >= 25:
-        print(Fore.YELLOW + "Risk Level: MEDIUM")
-
+        risk_level = "MEDIUM"
+        
     else:
-        print(Fore.GREEN + "Risk Level: LOW")
+        risk_level = "LOW"
+        
+    print(Fore.MAGENTA + f"Risk Level: {risk_level}")
+
+    write_html_report(
+        html_report_path, 
+        json_findings,
+        severity_counts,
+        total_findings,
+        risk_level
+    )
 
 if __name__ == "__main__":
     main()

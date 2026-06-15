@@ -1,4 +1,4 @@
-def write_html_report(report_path, findings):
+def write_html_report(report_path, findings, severity_counts, total_findings, risk_level):
 
     high_count = 0
     medium_count = 0
@@ -14,6 +14,13 @@ def write_html_report(report_path, findings):
             owasp_counts[owasp] = 0
         
         owasp_counts[owasp] += 1
+
+        risk_color = {
+            "CRITICAL": "#ff4d4d",
+            "HIGH": "#ff944d",
+            "MEDIUM": "#ffd24d",
+            "LOW": "#66cc66",
+        }.get(risk_level, "#cccccc")
 
         if severity == "HIGH":
             high_count += 1
@@ -65,7 +72,25 @@ th {{
     background-color: #d4edda;
     color: #155724;
     font-weight: bold;
-}}                                                          
+}}     
+
+.dashboard {{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}} 
+
+.card {{
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    min-width: 120px;
+    max-width: 120px;
+    text-align: center;
+    font-weight: bold;
+}}
+                                                                                                                
 </style>
 </head>
 <body>
@@ -73,10 +98,33 @@ th {{
 <h1>Secure Scan Report</h1>
                      
 <h2>Scan Summary</h2>
-                     
-<p>HIGH Findings: {high_count}</p>
-<p>MEDIUM Findings: {medium_count}</p>
-<p>LOW Findings: {low_count}</p>
+
+<div class="dashboard">
+    <div class="card">
+        HIGH<br>
+        {high_count}
+    </div>
+
+    <div class="card">
+        MEDIUM<br>
+        {medium_count}
+    </div>
+
+    <div class="card">
+        LOW<br>
+        {low_count}
+    </div>
+
+    <div class="card">
+        TOTAL<br>
+        {total_findings}
+    </div>
+
+    <div class="card" style="color:{risk_color};">
+        RISK<br>
+        {risk_level}
+    </div>
+</div>
 
 <h2>OWASP Categories</h2>
 """)
