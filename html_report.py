@@ -4,10 +4,33 @@ def write_html_report(report_path, findings, severity_counts, total_findings, ri
     medium_count = 0
     low_count = 0
     owasp_counts = {}
+    unique_findings = {}
+
+    for finding in findings:
+        keyword = finding.get("keyword")
+
+        if keyword not in unique_findings:
+            unique_findings[keyword] = finding
 
     top_findings = sorted(
-        findings,
+        unique_findings.values(),
         key=lambda finding: finding.get("cvss", 0),
+        reverse=True
+    )[:5]
+
+    finding_counts = {}
+
+    for finding in findings:
+        keyword = finding.get("keyword")
+
+    if keyword not in finding_counts:
+        finding_counts[keyword] = 0
+
+    finding_counts[keyword] += 1
+
+    most_common_findings = sorted(
+        finding_counts.items(),
+        key=lambda item: item[1],
         reverse=True
     )[:5]
 
@@ -37,8 +60,19 @@ def write_html_report(report_path, findings, severity_counts, total_findings, ri
         elif severity == "LOW":
             low_count += 1
 
+    executive_summary = f"""
+    This scan analyzed {total_findings} findings.
+
+    {high_count} findings were HIGH severity,
+    {medium_count} findings were MEDIUM severity,
+    and {low_count} findings were LOW severity.
+
+    Overall Risk Level: {risk_level}
+    """                 
+
     with open(report_path, "w") as report:
-        report.write(f"""                    
+        report.write(f"""   
+              
 <html>
 <head>
 <title>Secure Scan Report</title>
@@ -96,6 +130,53 @@ th {{
     text-align: center;
     font-weight: bold;
 }}
+                     
+.summary-box {{
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #fafafa;
+    max-width: 900px;
+}}
+                     
+.summary-box p {{
+    front-size: 16px;
+    line-height: 1.6;
+    white-space: pre-line;
+}}
+                     
+.chart-container {{
+    margin-bottom: 30px;
+}}
+
+.chart-row {{
+    margin: 12px 0;
+}}
+
+.chart-row span {{
+    display: inline-block;
+    width: 150px;
+    font-weight: bold;
+}}
+
+.bar {{
+    display: inline-block;
+    height: 25px;
+    border-radius: 4px;
+}}
+
+.high-bar {{
+    background-color: #dc3545;
+}}
+
+.medium-bar {{
+    background-color: #ffc107;
+}}
+
+.low-bar {{
+    background-color: #28a745;
+}}
                                                                                                                 
 </style>
 </head>
@@ -132,26 +213,81 @@ th {{
     </div>
 </div>
 
+<h2>Executive Summary</h2>
+
+<div class="summary-box">
+     <p>{executive_summary}</p>
+
+<h2>Risk Distribution</h2>
+
+<div class="chart-container">
+
+    <div class="chart-row">
+        <span>HIGH ({high_count})</span>
+        <div class="bar high-bar"
+             style="width:{high_count * 10}px;">
+        </div>
+    </div>
+
+    <div class="chart-row">
+        <span>MEDIUM ({medium_count})</span>
+        <div class="bar medium-bar"
+             style="width:{medium_count * 10}px;">
+        </div>
+    </div>
+
+    <div class="chart-row">
+        <span>LOW ({low_count})</span>
+        <div class="bar low-bar"
+             style="width:{low_count * 10}px;">
+        </div>
+    </div>
+
+</div>
+</div>
+
 <h2>Top 5 Highest-Risk Findings</h2>
 
 <table>
 <tr>
+    <th>Rank</th>
     <th>Keyword</th>
     <th>Severity</th>
     <th>CVSS</th>
-    <th>File</th>
+    <th>Confidence</th>
+    <th>OWASP</th>
 </tr>
 
 {"".join(
     f"""
     <tr>
+        <td>#{i}</td>
         <td>{finding.get('keyword', '')}</td>
         <td>{finding.get('severity', '')}</td>
         <td>{finding.get('cvss', '')}</td>
-        <td>{str(finding.get('file', '')).split('/')[-1]}</td>
+        <td>{finding.get('confidence', 'UNKNOWN')}</td>
+        <td>{finding.get('owasp', 'UNKNOWN')}</td>
     </tr>
     """
-    for finding in top_findings
+    for i, finding in enumerate(top_findings, start=1)
+)}
+
+<h2>Most Common Findings</h2>
+
+</table>
+<tr>
+    <th>Keyword</th>
+    <th>Count</th>
+</tr>
+
+{"".join(
+    f"""
+    <tr>
+        <td>{keyword}</tb>
+        <td>{count}</tb>
+    </tr>
+    """
+    for keyword, count in most_common_findings
 )}
 
 </table>

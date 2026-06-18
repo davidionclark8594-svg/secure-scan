@@ -13,6 +13,8 @@ from owasp import get_owasp_category
 from cvss import get_cvss
 from remediation import get_remediation
 from html_report import write_html_report
+import os
+import glob
 
 class Colors:
     RED = "\033[91m"
@@ -121,6 +123,12 @@ def write_text_report(report_path, matches):
 
 def main():
     print("🧠 Directory Log Scanner")
+    for old_report in glob.glob("reports/*"):
+        try:
+            os.remove(old_report)
+        except Exception as e:
+            print(f"Could not remove {old_report}: {e}")
+            
     start_time = time.time()
 
     # Base dir = Week1 (because this file is Week1/src/file_scan.py)
