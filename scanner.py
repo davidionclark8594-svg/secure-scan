@@ -15,6 +15,10 @@ from remediation import get_remediation
 from html_report import write_html_report
 import os
 import glob
+from trend_analysis import (
+    save_scan_history,
+    get_previous_scan
+)
 
 class Colors:
     RED = "\033[91m"
@@ -128,7 +132,7 @@ def main():
             os.remove(old_report)
         except Exception as e:
             print(f"Could not remove {old_report}: {e}")
-            
+
     start_time = time.time()
 
     # Base dir = Week1 (because this file is Week1/src/file_scan.py)
@@ -319,6 +323,13 @@ def main():
         severity_counts["HIGH"] * 10 +
         severity_counts["MEDIUM"] * 5 +
         severity_counts["LOW"] * 1
+    )
+
+    previous_scan = get_previous_scan()
+
+    save_scan_history(
+        severity_counts,
+        risk_score
     )
 
     total_findings = sum(severity_counts.values())
