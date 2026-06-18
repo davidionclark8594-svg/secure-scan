@@ -272,10 +272,13 @@ th {{
     for i, finding in enumerate(top_findings, start=1)
 )}
 
+</table>
+
 <h2>Most Common Findings</h2>
 
-</table>
+<table>
 <tr>
+    <th>Rank</th>
     <th>Keyword</th>
     <th>Count</th>
 </tr>
@@ -283,11 +286,12 @@ th {{
 {"".join(
     f"""
     <tr>
+        <td>#{i}</td>
         <td>{keyword}</tb>
         <td>{count}</tb>
     </tr>
     """
-    for keyword, count in most_common_findings
+    for i, (keyword, count) in enumerate(most_common_findings, start=1)
 )}
 
 </table>
