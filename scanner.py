@@ -358,7 +358,8 @@ def main():
         json_findings,
         severity_counts,
         total_findings,
-        risk_level
+        risk_level,
+        previous_scan
     )
 
 if __name__ == "__main__":

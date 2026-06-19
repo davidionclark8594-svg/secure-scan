@@ -1,4 +1,4 @@
-def write_html_report(report_path, findings, severity_counts, total_findings, risk_level):
+def write_html_report(report_path, findings, severity_counts, total_findings, risk_level, previous_scan):
 
     high_count = 0
     medium_count = 0
@@ -44,13 +44,6 @@ def write_html_report(report_path, findings, severity_counts, total_findings, ri
         
         owasp_counts[owasp] += 1
 
-        risk_color = {
-            "CRITICAL": "#ff4d4d",
-            "HIGH": "#ff944d",
-            "MEDIUM": "#ffd24d",
-            "LOW": "#66cc66",
-        }.get(risk_level, "#cccccc")
-
         if severity == "HIGH":
             high_count += 1
 
@@ -60,6 +53,31 @@ def write_html_report(report_path, findings, severity_counts, total_findings, ri
         elif severity == "LOW":
             low_count += 1
 
+        risk_color = {
+            "CRITICAL": "#ff4d4d",
+            "HIGH": "#ff944d",
+            "MEDIUM": "#ffd24d",
+            "LOW": "#66cc66",
+        }.get(risk_level, "#cccccc")
+
+    if previous_scan:
+        high_change = severity_counts["HIGH"] - previous_scan.get("high", 0)
+        medium_change = severity_counts["MEDIUM"] - previous_scan.get("medium", 0)
+        low_change = severity_counts["LOW"] - previous_scan.get("low", 0)
+        
+        current_risk_score = (
+            severity_counts["HIGH"] * 10 +
+            severity_counts["MEDIUM"] * 5 +
+            severity_counts["LOW"] * 1
+        )
+
+        risk_change = current_risk_score - previous_scan.get("risk_score", 0)
+    else:
+        high_change = "No previous scan"
+        medium_change = "No previous scan"
+        low_change = "No previous scan"
+        risk_change = "No previous scan"
+
     executive_summary = f"""
     This scan analyzed {total_findings} findings.
 
@@ -67,8 +85,22 @@ def write_html_report(report_path, findings, severity_counts, total_findings, ri
     {medium_count} findings were MEDIUM severity,
     and {low_count} findings were LOW severity.
 
-    Overall Risk Level: {risk_level}
-    """                 
+    <h2>Overall Risk Assessment</h2>
+
+    <div class="card">
+        <strong>Risk Level:</strong> {risk_level}<br>
+        <strong>Risk Score:</strong> {current_risk_score}
+    </div>
+
+    <h2>Historical Trend Analysis</h2>
+
+<div class="trend-dashboard" style="display: block;">
+        <p><strong>HIGH Change:</strong> {high_change}</p>
+        <p><strong>MEDIUM Change:</strong> {medium_change}</p>
+        <p><strong>LOW Change:</strong> {low_change}</p>
+        <p><strong>Risk Score Change:</strong> {risk_change}</p>
+</div> 
+"""         
 
     with open(report_path, "w") as report:
         report.write(f"""   
@@ -118,26 +150,22 @@ th {{
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }} 
 
 .card {{
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 15px;
-    min-width: 120px;
-    max-width: 120px;
-    text-align: center;
-    font-weight: bold;
-}}
-                     
-.summary-box {{
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    background: #fafafa;
-    max-width: 900px;
+    padding: 15px;
+    min-width: 150px;
+    height: auto;
+}}
+                     
+.summary-card {{
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
 }}
                      
 .summary-box p {{
@@ -177,6 +205,28 @@ th {{
 .low-bar {{
     background-color: #28a745;
 }}
+                     
+.trend-card {{
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    min-width: 140px;
+    height: auto;
+}}
+                     
+.trend-dashboard {{
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    clear: both;
+}}
+                     
+.trend-dashboard .card {{
+    width: 180px;
+    min-height: 60px;
+    height: auto;
+}}
                                                                                                                 
 </style>
 </head>
@@ -215,7 +265,7 @@ th {{
 
 <h2>Executive Summary</h2>
 
-<div class="summary-box">
+<div class="summary-card">
      <p>{executive_summary}</p>
 
 <h2>Risk Distribution</h2>
@@ -245,6 +295,8 @@ th {{
 
 </div>
 </div>
+
+<div style="clear: both;"></div>
 
 <h2>Top 5 Highest-Risk Findings</h2>
 
