@@ -233,5 +233,19 @@
         "medium": 8,
         "low": 6,
         "risk_score": 306
+    },
+    {
+        "timestamp": "2026-06_30 15:31:41",
+        "high": 26,
+        "medium": 8,
+        "low": 6,
+        "risk_score": 306
+    },
+    {
+        "timestamp": "2026-06_30 15:35:25",
+        "high": 26,
+        "medium": 8,
+        "low": 6,
+        "risk_score": 306
     }
 ]

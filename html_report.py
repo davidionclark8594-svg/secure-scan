@@ -518,6 +518,9 @@ th {{
                 datasets: [{{
                     label: 'Findings',
                     data: [{high_count}, {medium_count}, {low_count}],
+                    backgroundColor: ['#dc3545', '#ffc107', '#28a745'],
+                    borderColor: ['#dc3545', '#ffc107', '#28a745'],
+                    borderWidth: 1
                 }}]
             }},
             options: {{
