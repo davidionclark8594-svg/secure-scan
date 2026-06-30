@@ -18,10 +18,17 @@ def write_html_report(report_path, findings, severity_counts, total_findings, ri
         reverse=True
     )[:5]
 
+    print("\nTotal findings passed into HTML report:")
+    print(len(findings))
+
+    print("\nFirst 5 findings:")
+    for finding in findings[:5]:
+        print(findings)
+
     finding_counts = {}
 
     for finding in findings:
-        keyword = finding.get("keyword")
+        keyword = finding.get("keyword", "UNKNOWN")
 
     if keyword not in finding_counts:
         finding_counts[keyword] = 0
@@ -79,28 +86,54 @@ def write_html_report(report_path, findings, severity_counts, total_findings, ri
         risk_change = "No previous scan"
 
     executive_summary = f"""
-    This scan analyzed {total_findings} findings.
+    This scan analyzed {total_findings} security findings across the target codebase.
 
-    {high_count} findings were HIGH severity,
-    {medium_count} findings were MEDIUM severity,
-    and {low_count} findings were LOW severity.
+    {high_count} findings were classified as HIGH severity, contributing to an overall {risk_level} risk posture.
+
+    Immediate remediation should prioritize credential exposure, injection vulnerabilities, and security misconfigurations identified in the highest-risk findings.
 
     <h2>Overall Risk Assessment</h2>
 
-    <div class="card">
-        <strong>Risk Level:</strong> {risk_level}<br>
-        <strong>Risk Score:</strong> {current_risk_score}
+    <div class="risk-assessment-card">
+
+        <div class="risk-title">
+            {risk_level}
+        </div>
+
+        <div class="risk-score-label">
+            Risk Score
+        </div>
+
+        <div class="risk-score">
+            {current_risk_score}
+        </div>
+
     </div>
 
     <h2>Historical Trend Analysis</h2>
 
-<div class="trend-dashboard" style="display: block;">
-        <p><strong>HIGH Change:</strong> {high_change}</p>
-        <p><strong>MEDIUM Change:</strong> {medium_change}</p>
-        <p><strong>LOW Change:</strong> {low_change}</p>
-        <p><strong>Risk Score Change:</strong> {risk_change}</p>
-</div> 
-"""         
+<div class="trend-grid">
+    <div class="trend-card">
+        <strong>HIGH Change</strong>
+        <span>{high_change}</span>
+    </div>
+
+    <div class="trend-card">
+        <strong>MEDIUM Change</strong>
+        <span>{medium_change}</span>
+    </div>
+
+    <div class="trend-card">
+        <strong>LOW Change</strong>
+        <span>{low_change}</span>
+    </div>
+
+    <div class="trend-card">
+        <strong>Risk Score Change</strong>
+        <span>{risk_change}</span>
+    </div>
+</div>
+"""
 
     with open(report_path, "w") as report:
         report.write(f"""   
@@ -108,7 +141,9 @@ def write_html_report(report_path, findings, severity_counts, total_findings, ri
 <html>
 <head>
 <title>Secure Scan Report</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
+                     
 body {{
     font-family: Arial;
     margin: 20px;
@@ -161,6 +196,12 @@ th {{
     height: auto;
 }}
                      
+.card .number {{
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 5px;
+}}
+                     
 .summary-card {{
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -169,7 +210,7 @@ th {{
 }}
                      
 .summary-box p {{
-    front-size: 16px;
+    font-size: 16px;
     line-height: 1.6;
     white-space: pre-line;
 }}
@@ -186,6 +227,15 @@ th {{
     display: inline-block;
     width: 150px;
     font-weight: bold;
+}}
+
+.chart-card {{
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 30px;
+    background: #fafafa;
+    max-width: 600px;
 }}
 
 .bar {{
@@ -227,40 +277,139 @@ th {{
     min-height: 60px;
     height: auto;
 }}
+                     
+.trend-grid {{
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}}
+                     
+.trend-card {{
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    min-width: 160px;
+    background-color: #fafafa;
+}}
+                     
+.trend-card strong {{
+    display: block;
+    margin-bottom: 8px;
+}}
+                     
+.trend-card span {{
+    font-size: 20px;
+    font-weight: bold;
+}}
+                     
+.header {{
+    background:#2d3748;
+    color:white;
+    padding:25px;
+    border-radius:10px
+    margin-bottom:25px;
+}}
+                     
+.header h1 {{
+    margin:0;
+}}
+                     
+.header p {{
+    margin-top:8px;
+    color:#cbd5e0;
+}}
+                     
+.risk-critical {{
+    background-color: #ffe5e5;
+    border: 6px solid #dc3545;
+    color: #990000;
+    font-weight: bold;
+}}
+                     
+.risk-assessment-card {{
+    border:2px solid #dc3545;
+    border-radius:10px;
+    padding:20px;
+    margin-bottom:30px;
+    background:#fff5f5;
+}}
+                     
+.risk-title {{
+    font-size:30px;
+    font-weight:bold;
+    color:#b30000;
+}}
+                     
+.risk-score-label {{
+    margin-top:12px;
+    font-size:18px;
+    color:#555;
+}}
+                     
+.risk-score {{
+    font-size:42px;
+    font-weight:bold;
+    color:#111;
+}}
+
+.risk-high {{
+    background: #fff0e0;
+    border:2px solid #ff9900;
+    color:#cc6600;
+}}
+
+.risk-medium {{
+    background: #fff9d6;
+    border:2px solid #ffcc00;
+    color:#856404;
+}}
+
+.risk-low {{
+    background: #e6ffe6;
+    border:2px solid #28a745;
+    color:#155724;
+}}                    
                                                                                                                 
 </style>
 </head>
+                     
 <body>
-                                                                           
-<h1>Secure Scan Report</h1>
+                     
+<div class="header">
+    <h1>Secure Scan Report</h1>
+    <p>Application Security Analysis Dashboard</p>
+</div>
                      
 <h2>Scan Summary</h2>
 
 <div class="dashboard">
+                     
     <div class="card">
-        HIGH<br>
-        {high_count}
+        <div>HIGH</div>
+        <div class="number">{high_count}</div>
     </div>
 
     <div class="card">
-        MEDIUM<br>
-        {medium_count}
+        <div>MEDIUM</div>
+        <div class="number">{medium_count}</div>
     </div>
 
     <div class="card">
-        LOW<br>
-        {low_count}
+        <div>LOW</div>
+        <div class="number">{low_count}</div>
     </div>
 
     <div class="card">
-        TOTAL<br>
-        {total_findings}
+        <div>TOTAL</div>
+        <div class="number">{total_findings}</div>
     </div>
 
-    <div class="card" style="color:{risk_color};">
-        RISK<br>
-        {risk_level}
+    <div class="card risk-critical">
+        <div class="label">RISK LEVEL</div>
+        <div class="number">{risk_level}</div>
     </div>
+
 </div>
 
 <h2>Executive Summary</h2>
@@ -270,30 +419,8 @@ th {{
 
 <h2>Risk Distribution</h2>
 
-<div class="chart-container">
-
-    <div class="chart-row">
-        <span>HIGH ({high_count})</span>
-        <div class="bar high-bar"
-             style="width:{high_count * 10}px;">
-        </div>
-    </div>
-
-    <div class="chart-row">
-        <span>MEDIUM ({medium_count})</span>
-        <div class="bar medium-bar"
-             style="width:{medium_count * 10}px;">
-        </div>
-    </div>
-
-    <div class="chart-row">
-        <span>LOW ({low_count})</span>
-        <div class="bar low-bar"
-             style="width:{low_count * 10}px;">
-        </div>
-    </div>
-
-</div>
+<div class="chart-card">
+    <canvas id="riskChart"></canvas>
 </div>
 
 <div style="clear: both;"></div>
@@ -335,16 +462,16 @@ th {{
     <th>Count</th>
 </tr>
 
-{"".join(
-    f"""
-    <tr>
-        <td>#{i}</td>
-        <td>{keyword}</tb>
-        <td>{count}</tb>
-    </tr>
-    """
-    for i, (keyword, count) in enumerate(most_common_findings, start=1)
-)}
+        {"".join(
+            f"""
+            <tr>
+                <td>#{i}</td>
+                <td>{keyword}</td>
+                <td>{count}</td>
+            </tr>
+            """
+            for i, (keyword, count) in enumerate(most_common_findings, start=1)
+        )}
 
 </table>
 
@@ -378,9 +505,33 @@ th {{
 </tr>
 """)
 
-        report.write("""
-</table>
+        report.write(f"""   
+        </table>
+                        
+        <script>
+        const ctx = document.getElementById('riskChart');
 
-</body>
-</html>
-""")
+        new Chart(ctx, {{
+            type: 'bar',
+            data: {{
+                labels: ['HIGH', 'MEDIUM', 'LOW'],
+                datasets: [{{
+                    label: 'Findings',
+                    data: [{high_count}, {medium_count}, {low_count}],
+                }}]
+            }},
+            options: {{
+                responsive: true,
+                plugins: {{
+                    legend: {{
+                        display: false
+                    }}
+                }}
+            }}
+
+        }});
+        </script>
+
+        </body>
+        </html>
+        """)
