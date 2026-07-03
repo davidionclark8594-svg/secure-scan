@@ -282,5 +282,75 @@
         "medium": 11,
         "low": 7,
         "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_03 15:49:06",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_03 15:49:10",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_03 15:56:14",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_03 16:03:04",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_03 16:14:56",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_03 16:17:24",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_03 16:31:37",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_03 16:31:42",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_03 16:34:59",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_03 17:18:38",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
     }
 ]

@@ -10,6 +10,7 @@ from colorama import Fore, Style, init
 init(autoreset=True)
 from confidence import classify_confidence
 from owasp import get_owasp_category
+from owasp import OWASP_MAP
 from cvss import get_cvss
 from remediation import get_remediation
 from html_report import write_html_report
@@ -235,6 +236,7 @@ def main():
                 "keyword": "double_extension",
                 "severity": "HIGH",
                 "confidence": classify_confidence("double_extension"),
+                "owasp": get_owasp_category("double_extension"),
                 "cvss": get_cvss("double_extension"),
                 "remediation": get_remediation("double_extension"),
                 "content": f"Dangerous file detected: {file_path.name}"
@@ -243,6 +245,9 @@ def main():
             total_matches += 1
             
             print(f" Dangerous file type: {file_path.name}")
+
+        if get_owasp_category("double_extension") == "UNKNOWN":
+                print("Missing OWASP mapping: double_extension")
 
         if file_path.suffix.lower() not in ALLOWED_EXTENSIONS:
             continue
@@ -286,12 +291,13 @@ def main():
                         "severity": severity,
                         "confidence": classify_confidence(kw),
                         "owasp": get_owasp_category(kw),
-                        "owasp": get_owasp_category("suspicious_filename"),
-                        "owasp": get_owasp_category("double_extension"),
                         "cvss": get_cvss(kw),
                         "remediation": get_remediation(kw),
                         "content": text
             })
+                    
+                if get_owasp_category(kw) == "UNKNOWN":
+                    print(f"UNKNOWN KEYWORD: {kw}")
 
                 write_text_report(report_path, matches)
                     

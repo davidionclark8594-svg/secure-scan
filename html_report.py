@@ -492,7 +492,7 @@ th {{
 
 <h2>OWASP Categories</h2>
 """)
-    
+
         for category, count in owasp_counts.items():
             report.write(f"<p>{category}: {count}</p>")
 
