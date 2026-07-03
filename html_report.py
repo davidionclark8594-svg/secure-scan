@@ -33,13 +33,15 @@ def write_html_report(report_path, findings, severity_counts, total_findings, ri
     if keyword not in finding_counts:
         finding_counts[keyword] = 0
 
-    finding_counts[keyword] += 1
+    from collections import Counter
 
-    most_common_findings = sorted(
-        finding_counts.items(),
-        key=lambda item: item[1],
-        reverse=True
-    )[:5]
+    finding_counts = Counter()
+
+    for finding in findings:
+        keyword = finding.get("keyword", "UNKNOWN")
+        finding_counts[keyword] +=1
+
+    most_common_findings = finding_counts.most_common(5)
 
     for finding in findings:
         severity = finding["severity"]     
@@ -369,7 +371,20 @@ th {{
     background: #e6ffe6;
     border:2px solid #28a745;
     color:#155724;
-}}                    
+}}     
+
+.filter-buttons {{
+    margin-bottom: 20px;
+}}    
+
+.filter-buttons button {{
+    padding: 10px 15px;
+    margin-right: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}}         
                                                                                                                 
 </style>
 </head>
@@ -481,7 +496,17 @@ th {{
         for category, count in owasp_counts.items():
             report.write(f"<p>{category}: {count}</p>")
 
-        report.write(f"""              
+        report.write(f"""   
+                     
+<h2>Search & Filter Findings</h2>                    
+
+<div class="filter-buttons">
+    <button onclick="filterFindings('ALL')">Show All</button>
+    <button onclick="filterFindings('HIGH')">High</button>
+    <button onclick="filterFindings('MEDIUM')">Medium</button>
+    <button onclick="filterFindings('LOW')">Low</button>
+</div>
+                                
 <table>
 <tr>
 <th>Keyword</th>

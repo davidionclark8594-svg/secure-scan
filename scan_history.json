@@ -247,5 +247,40 @@
         "medium": 8,
         "low": 6,
         "risk_score": 306
+    },
+    {
+        "timestamp": "2026-06_30 15:59:06",
+        "high": 26,
+        "medium": 8,
+        "low": 6,
+        "risk_score": 306
+    },
+    {
+        "timestamp": "2026-06_30 16:21:03",
+        "high": 30,
+        "medium": 8,
+        "low": 6,
+        "risk_score": 346
+    },
+    {
+        "timestamp": "2026-07_03 15:16:27",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_03 15:16:34",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_03 15:27:18",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
     }
 ]

