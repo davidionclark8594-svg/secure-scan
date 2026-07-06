@@ -384,13 +384,43 @@ th {{
 }}    
 
 .filter-buttons button {{
-    padding: 10px 15px;
-    margin-right: 8px;
-    border: 1px solid #ccc;
+    padding: 12px 22px;
+    font-size: 16px;
+    margin: 5px;
+    border: none;
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
-}}         
+}}     
+
+.export-button {{
+    margin: 15px 0;
+}}  
+
+.export-button button {{
+    background-color: #2563eb;
+    color: white;
+    padding: 14px 26px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}}  
+                     
+.export-button button:hover {{
+    background-color: #1d4ed8;
+    transform: scale(1.03);
+}}
+                     
+#findingSearch {{
+    width: 500px !important;
+    padding: 15px !important;
+    font-size: 18px !important;
+    border-radius: 6px;
+    border: 3px solid red !important;
+}}
                                                                                                                 
 </style>
 </head>
@@ -437,6 +467,7 @@ th {{
 
 <div class="summary-card">
      <p>{executive_summary}</p>
+</div>
 
 <h2>Risk Distribution</h2>
 
@@ -504,37 +535,48 @@ th {{
 
         report.write(f"""   
                      
-<h2>Search & Filter Findings</h2>                    
+<h2>Search & Filter Findings</h2>   
 
-<div class="filter-buttons">
-    <button onclick="filterFindings('ALL')">Show All</button>
-    <button onclick="filterFindings('HIGH')">High</button>
-    <button onclick="filterFindings('MEDIUM')">Medium</button>
-    <button onclick="filterFindings('LOW')">Low</button>
-</div>
-                                
-<table>
-<tr>
-<th>Keyword</th>
-<th>Severity</th>
-<th>Confidence</th>
-<th>OWASP</th>
-<th>CVSS</th>
-<th>Remediation</th>
-</tr>
-""")
+        <input
+            type="text"
+            id="findingSearch"
+            placeholder="Search findings..."
+            onkeyup="searchFindings()"
+        />                 
+
+        <div class="filter-buttons">
+            <button onclick="filterFindings('ALL')">Show All</button>
+            <button onclick="filterFindings('HIGH')">High</button>
+            <button onclick="filterFindings('MEDIUM')">Medium</button>
+            <button onclick="filterFindings('LOW')">Low</button>
+        </div>
+                     
+        <div class="export-button">
+            <button onclick="window.print()">Export / Print PDF</button>
+        </div>
+                                        
+        <table id="findingsTable">
+            <tr>
+                <th onclick="sortTable(0)">Keyword</th>
+                <th onclick="sortTable(1)">Severity</th>
+                <th onclick="sortTable(2)">Confidence</th>
+                <th onclick="sortTable(3)">OWASP</th>
+                <th onclick="sortTable(4)">CVSS</th>
+                <th onclick="sortTable(5)">Remediation</th>
+            </tr>
+            """)
 
         for finding in findings:
             report.write(f"""
-<tr>
-<td>{finding['keyword']}</td>
-<td class="{finding['severity'].lower()}">{finding['severity']}</td>
-<td>{finding['confidence']}</td>
-<td>{finding.get("owasp", "MISSING")}</td>
-<td>{finding.get("cvss", "MISSING")}</td>
-<td>{finding.get("remediation", "MISSING")}</td>
-</tr>
-""")
+            <tr data-severity="{finding['severity']}">
+                <td>{finding['keyword']}</td>
+                <td class="{finding['severity'].lower()}">{finding['severity']}</td>
+                <td>{finding['confidence']}</td>
+                <td>{finding.get("owasp", "MISSING")}</td>
+                <td>{finding.get("cvss", "MISSING")}</td>
+                <td>{finding.get("remediation", "MISSING")}</td>
+            </tr>
+            """)
 
         report.write(f"""   
         </table>
@@ -564,6 +606,59 @@ th {{
             }}
 
         }});
+
+        function filterFindings(severity) {{
+            const rows = document.querySelectorAll('tr[data-severity]');
+
+            rows.forEach(row => {{
+                if (severity === 'ALL' || row.dataset.severity === severity) {{
+            row.style.display = '';
+                }} else {{
+                    row.style.display = 'none';
+                }}
+            }});
+        }}
+
+        function searchFindings() {{
+            const searchInput = document.getElementById('findingSearch').value.toLowerCase();
+            const rows = document.querySelectorAll('tr[data-severity]');
+
+            rows.forEach(row => {{
+                const rowText = row.innerText.toLowerCase();
+
+            if (rowText.includes(searchInput)) {{
+                row.style.display = '';
+            }} else {{
+            row.style.display = 'none';
+            }}
+        }});
+    }}
+
+        function sortTable(columnIndex) {{
+            const table = document.getElementById('findingsTable');
+            const rows = Array.from(table.querySelectorAll('tr[data-severity]'));
+            const ascending = table.dataset.sortOrder !== 'asc';
+
+        rows.sort((a, b) => {{
+            const aText = a.children[columnIndex].innerText.trim();
+            const bText = b.children[columnIndex].innerText.trim();
+
+            const aNum = parseFloat(aText);
+            const bNum = parseFloat(bText);
+
+            if (!isNaN(aNum) && !isNaN(bNum)) {{
+                return ascending ? aNum - bNum : bNum - aNum;
+        }}
+
+            return ascending 
+                ? aText.localeCompare(bText) 
+                : bText.localeCompare(aText);
+    }});
+
+    rows.forEach(row => table.appendChild(row));
+
+    table.dataset.sortOrder = ascending ? 'asc' : 'desc';
+}}
         </script>
 
         </body>

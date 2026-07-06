@@ -21,6 +21,7 @@ from trend_analysis import (
     get_previous_scan
 )
 import argparse
+from csv_report import write_csv_report
 
 class Colors:
     RED = "\033[91m"
@@ -169,8 +170,9 @@ def main():
     
     html_report_path = (base_dir / "reports" / f"scan_report_{timestamp}.html").resolve()
 
-    json_findings = []
+    csv_report_path = (base_dir / "reports" / f"scan_report_{timestamp}.csv").resolve()
 
+    json_findings = []
     total_matches = 0
     files_scanned = 0
     files_skipped = 0
@@ -379,6 +381,11 @@ def main():
         risk_level,
         previous_scan
     )
+
+    write_csv_report(csv_report_path, json_findings)
+    print(f"HTML report saved to: {html_report_path}")
+    print(f"CSV report saved to: {csv_report_path}")
+    print(f"JSON report saved to: {json_report_path}")
 
 if __name__ == "__main__":
     main()

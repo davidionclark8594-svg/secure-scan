@@ -408,5 +408,110 @@
         "medium": 11,
         "low": 7,
         "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_06 11:42:37",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_06 11:45:03",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_06 12:12:43",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_06 12:33:22",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_06 12:52:51",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_06 14:07:24",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_06 14:09:41",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_06 14:15:46",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_06 14:22:01",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_06 14:40:14",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_06 14:42:36",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_06 14:47:43",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_06 14:55:12",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_06 15:03:59",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
+    },
+    {
+        "timestamp": "2026-07_06 15:10:57",
+        "high": 35,
+        "medium": 11,
+        "low": 7,
+        "risk_score": 412
     }
 ]
