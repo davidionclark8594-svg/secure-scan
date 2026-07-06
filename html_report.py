@@ -7,6 +7,12 @@ def write_html_report(report_path, findings, severity_counts, total_findings, ri
     unique_findings = {}
 
     for finding in findings:
+        owasp = repr(finding.get("owasp", "UNKNOWN"))
+        print(owasp)
+
+        clean_owasp = finding.get("owasp", "UNKNOWN").strip()
+
+        owasp_counts[clean_owasp]= owasp_counts.get(clean_owasp, 0) + 1
         keyword = finding.get("keyword")
 
         if keyword not in unique_findings:
@@ -46,7 +52,7 @@ def write_html_report(report_path, findings, severity_counts, total_findings, ri
     for finding in findings:
         severity = finding["severity"]     
 
-        owasp = finding.get("owasp", "UNKNOWN")
+        owasp = finding.get("owasp", "UNKNOWN").strip()
 
         if owasp not in owasp_counts:
             owasp_counts[owasp] = 0

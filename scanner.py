@@ -20,6 +20,7 @@ from trend_analysis import (
     save_scan_history,
     get_previous_scan
 )
+import argparse
 
 class Colors:
     RED = "\033[91m"
@@ -128,6 +129,18 @@ def write_text_report(report_path, matches):
 
 def main():
     print("🧠 Directory Log Scanner")
+
+    parser = argparse.ArgumentParser(description="SecureScan - Application Security Scanner")
+
+    parser.add_argument(
+        "--scan",
+        default="data",
+        help="Folder to scan. Default is data."
+    )
+
+    args = parser.parse_args() 
+
+
     for old_report in glob.glob("reports/*"):
         try:
             os.remove(old_report)
@@ -138,9 +151,8 @@ def main():
 
     # Base dir = Week1 (because this file is Week1/src/file_scan.py)
     base_dir = Path(__file__).resolve().parent
-
-    folder = input("Enter folder to scan (blank = data): ").strip()
-    folder = folder if folder else "data"
+    
+    folder = args.scan
 
     folder_path = (base_dir / folder).resolve()
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
