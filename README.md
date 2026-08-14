@@ -176,7 +176,7 @@ cd secure-scan
 Create a virtual environment:
 
 ```bash
-python -m venv venv
+python3 -m venv venv
 ```
 
 Activate it on macOS/Linux:
@@ -188,7 +188,7 @@ source venv/bin/activate
 Install dependencies:
 
 ```bash
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
 ---
