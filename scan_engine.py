@@ -307,6 +307,10 @@ def scan_folder(
             files_skipped += 1
             continue
 
+        if file_path.name.startswith("."):
+            files_skipped += 1
+            continue
+
         files_scanned += 1
 
         matches = detect_filename_matches(

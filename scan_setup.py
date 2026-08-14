@@ -1,6 +1,7 @@
 import argparse
 import glob
 import os
+import shutil
 
 from datetime import datetime
 from pathlib import Path
@@ -22,7 +23,10 @@ def parse_arguments():
 def clean_reports_directory():
     for old_report in glob.glob("reports/*"):
         try:
-            os.remove(old_report)
+            if os.path.isdir(old_report):
+                shutil.rmtree(old_report)
+            else:
+                os.remove(old_report)
         except Exception as error:
             print(
                 f"Could not remove {old_report}: {error}"

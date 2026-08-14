@@ -32,5 +32,5 @@ scan_history.json
 .coverage
 htmlcov/
 
-# Runtime vulnerability history
-data/vulnerability_history.json
+# SecureScan runtime state
+.securescan/
