@@ -106,46 +106,45 @@ secure-scan/
 ├── requirements.txt
 ├── .gitignore
 │
-├── src/
-│   ├── scanner.py
-│   ├── scan_engine.py
-│   ├── scan_setup.py
-│   ├── patterns.py
-│   ├── rule_registry.py
-│   ├── severity.py
-│   ├── confidence.py
-│   ├── cvss.py
-│   ├── owasp.py
-│   ├── remediation.py
-│   ├── fingerprint.py
-│   ├── metrics.py
-│   ├── scan_statistics.py
-│   ├── scan_history.py
-│   ├── scan_comparison.py
-│   ├── trend_analysis.py
-│   ├── vulnerability_history.py
-│   ├── report_manager.py
-│   ├── html_report.py
-│   ├── csv_report.py
-│   ├── drilldown_pages.py
-│   ├── cwe_drilldown_pages.py
-│   ├── file_detail_pages.py
-│   │
-│   └── report_components/
-│       ├── __init__.py
-│       ├── header.py
-│       ├── executive.py
-│       ├── findings.py
-│       ├── cwe.py
-│       ├── owasp.py
-│       ├── remediation.py
-│       ├── risky_files.py
-│       ├── history.py
-│       ├── tables.py
-│       ├── charts.py
-│       ├── dashboard.py
-│       ├── styles.py
-│       └── scripts.py
+├── scanner.py
+├── scan_engine.py
+├── scan_setup.py
+├── patterns.py
+├── rule_registry.py
+├── severity.py
+├── confidence.py
+├── cvss.py
+├── owasp.py
+├── remediation.py
+├── fingerprint.py
+├── metrics.py
+├── scan_statistics.py
+├── scan_history.py
+├── scan_comparison.py
+├── trend_analysis.py
+├── vulnerability_history.py
+├── report_manager.py
+├── html_report.py
+├── csv_report.py
+├── drilldown_pages.py
+├── cwe_drilldown_pages.py
+├── file_detail_pages.py
+│
+└── report_components/
+    ├── __init__.py
+    ├── header.py
+    ├── executive.py
+    ├── findings.py
+    ├── cwe.py
+    ├── owasp.py
+    ├── remediation.py
+    ├── risky_files.py
+    ├── history.py
+    ├── tables.py
+    ├── charts.py
+    ├── dashboard.py
+    ├── styles.py
+    └── scripts.py
 │
 ├── data/
 │   └── sample_log.txt
@@ -199,7 +198,7 @@ pip install -r requirements.txt
 Run SecureScan against a target directory:
 
 ```bash
-python src/scanner.py --path data
+python scanner.py --path data
 ```
 
 SecureScan analyzes the selected files, evaluates detected security findings, and generates reporting artifacts.
