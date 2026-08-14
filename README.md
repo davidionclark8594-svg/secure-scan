@@ -1,6 +1,6 @@
 # 🔐 SecureScan
 
-> **A modular Python Static Application Security Testing (SAST) project built to identify common security weaknesses, prioritize risk, track vulnerabilities across scans, and generate security-focused reports.**
+> **A modular Python SAST-style static security analysis project that uses rule- and pattern-based scanning to identify common application security weaknesses, prioritize risk, track vulnerabilities across scans, and generate security-focused reports.**
 
 ## Application Security Portfolio Project
 
@@ -271,7 +271,7 @@ Future development may include:
 **Davidion Clark**
 
 Aspiring Application Security Engineer
-Python | SAST | DevSecOps | Cloud Security | AI + Security
+Python | Application Security | DevSecOps | Cloud Security | AI + Security
 
 ---
 
