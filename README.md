@@ -198,7 +198,7 @@ pip install -r requirements.txt
 Run SecureScan against a target directory:
 
 ```bash
-python scanner.py --path data
+python3 scanner.py --scan data
 ```
 
 SecureScan analyzes the selected files, evaluates detected security findings, and generates reporting artifacts.
