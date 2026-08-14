@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>urgent_payroll_password.txt Security Details</title>
+    <title>invoice.pdf.EXE Security Details</title>
 
     <style>
         body {
@@ -113,19 +113,19 @@
 </a>
 
 <div class="header">
-    <h1>urgent_payroll_password.txt</h1>
-    <p>/Users/davidionclarksr./python-projects/secure-scan/data/urgent_payroll_password.txt</p>
+    <h1>invoice.pdf.EXE</h1>
+    <p>/example/secure-scan/data/invoice.pdf.EXE</p>
 </div>
 
 <div class="metrics-grid">
     <div class="metric-card">
         <strong>Total Findings</strong>
-        <span>10</span>
+        <span>3</span>
     </div>
 
     <div class="metric-card">
         <strong>Risk Score</strong>
-        <span>35</span>
+        <span>25</span>
     </div>
 
     <div class="metric-card">
@@ -135,12 +135,12 @@
 
     <div class="metric-card">
         <strong>Average CVSS</strong>
-        <span>5.33</span>
+        <span>6.0</span>
     </div>
 
     <div class="metric-card">
         <strong>Highest CVSS</strong>
-        <span>9.8</span>
+        <span>8.0</span>
     </div>
 
     <div class="metric-card severity-high">
@@ -150,7 +150,7 @@
 
     <div class="metric-card severity-medium">
         <strong>MEDIUM</strong>
-        <span>3</span>
+        <span>1</span>
     </div>
 
     <div class="metric-card severity-low">
@@ -163,7 +163,7 @@
     <h2>OWASP Categories</h2>
 
     <ul>
-        <li>A01: Broken Access Control</li><li>A02: Cryptographic Failures</li><li>A03: Injection</li><li>A05: Security Misconfiguration</li><li>A07: Identification and Authentication Failures</li>
+        <li>A05: Security Misconfiguration</li>
     </ul>
 </div>
 
@@ -182,23 +182,23 @@
 
 
             <tr>
-                <td>xss</td>
+                <td>dangerous_file_type</td>
                 <td>HIGH</td>
-                <td>A03: Injection</td>
+                <td>A05: Security Misconfiguration</td>
                 <td>5.0</td>
-                <td>5</td>
-                <td>XSS payload detected: &lt;script&gt;alert(1)&lt;/script&gt;</td>
+                <td>0</td>
+                <td>Dangerous file detected: invoice.pdf.EXE</td>
                 <td>Review finding and remediate appropriately.</td>
             </tr>
 
             <tr>
-                <td>token</td>
+                <td>double_extension</td>
                 <td>HIGH</td>
-                <td>A02: Cryptographic Failures</td>
-                <td>5.0</td>
-                <td>8</td>
-                <td>JWT token leaked: eyJhbGciOi</td>
-                <td>Review finding and remediate appropriately.</td>
+                <td>A05: Security Misconfiguration</td>
+                <td>8.0</td>
+                <td>0</td>
+                <td>Suspicious double extension: invoice.pdf.EXE</td>
+                <td>Block execution and inspect file.</td>
             </tr>
 
             <tr>
@@ -207,77 +207,7 @@
                 <td>A05: Security Misconfiguration</td>
                 <td>5.0</td>
                 <td>0</td>
-                <td>Suspicious filename: urgent_payroll_password.txt</td>
-                <td>Review finding and remediate appropriately.</td>
-            </tr>
-
-            <tr>
-                <td>admin</td>
-                <td>MEDIUM</td>
-                <td>A01: Broken Access Control</td>
-                <td>5.0</td>
-                <td>1</td>
-                <td>User logged in as admin</td>
-                <td>Review finding and remediate appropriately.</td>
-            </tr>
-
-            <tr>
-                <td>admin</td>
-                <td>MEDIUM</td>
-                <td>A01: Broken Access Control</td>
-                <td>5.0</td>
-                <td>6</td>
-                <td>Broken access control: user accessed /admin without permission</td>
-                <td>Review finding and remediate appropriately.</td>
-            </tr>
-
-            <tr>
-                <td>weak_password</td>
-                <td>UNKNOWN</td>
-                <td>A07: Identification and Authentication Failures</td>
-                <td>6.5</td>
-                <td>2</td>
-                <td>Password found: password123</td>
-                <td>Enforce strong password policies.</td>
-            </tr>
-
-            <tr>
-                <td>default_credentials</td>
-                <td>UNKNOWN</td>
-                <td>A05: Security Misconfiguration</td>
-                <td>5.0</td>
-                <td>3</td>
-                <td>Default credentials detected: admin:admin</td>
-                <td>Review finding and remediate appropriately.</td>
-            </tr>
-
-            <tr>
-                <td>sql_injection_payload</td>
-                <td>UNKNOWN</td>
-                <td>A03: Injection</td>
-                <td>9.8</td>
-                <td>4</td>
-                <td>SQL injection attempt: &#x27; OR &#x27;1&#x27;=&#x27;1</td>
-                <td>Use parameterized queries.</td>
-            </tr>
-
-            <tr>
-                <td>api_key_assignment</td>
-                <td>UNKNOWN</td>
-                <td>A02: Cryptographic Failures</td>
-                <td>5.0</td>
-                <td>7</td>
-                <td>Sensitive data exposed: api_key=12345</td>
-                <td>Review finding and remediate appropriately.</td>
-            </tr>
-
-            <tr>
-                <td>ip_address</td>
-                <td>UNKNOWN</td>
-                <td>A05: Security Misconfiguration</td>
-                <td>2.0</td>
-                <td>9</td>
-                <td>SSRF request to http://169.254.169.254/latest/meta-data</td>
+                <td>Suspicious filename: invoice.pdf.EXE</td>
                 <td>Review finding and remediate appropriately.</td>
             </tr>
 
