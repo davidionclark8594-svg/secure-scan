@@ -1,62 +1,285 @@
-🔐 Secure Scan – Python AppSec Scanner
-A lightweight Application Security (AppSec) scanner that analyzes log files and detects common security vulnerabilities such as exposed credentials, SQL injection attempts, and XSS payloads.
+# 🔐 SecureScan
 
-🚀 Features
-* 🔍 Scans log files for security risks
-* ⚠️ Detects:
-    * Password exposure
-    * Tokens / secrets
-    * SQL Injection patterns
-    * Cross-Site Scripting (XSS)
-* 📊 Severity classification (HIGH / MEDIUM / LOW)
-* 📄 Generates:
-    * Text report
-    * JSON report
-* 🧠 CLI support using argparse
+> **A modular Python Static Application Security Testing (SAST) project built to identify common security weaknesses, prioritize risk, track vulnerabilities across scans, and generate security-focused reports.**
 
-📁 Project Structure
+## Application Security Portfolio Project
+
+SecureScan is a Python-based Application Security scanner that I designed and built as a hands-on portfolio project while developing my skills in Application Security, secure software development, Python, vulnerability management, and DevSecOps.
+
+The project began as a small command-line scanner and has been progressively refactored into a modular security application with dedicated components for scanning, rule management, vulnerability classification, risk analysis, historical tracking, reporting, and security remediation.
+
+SecureScan demonstrates the engineering and security concepts commonly involved in modern Application Security programs.
+
+---
+
+## 🎯 Project Goals
+
+SecureScan was built to help me develop practical experience with:
+
+* Static Application Security Testing concepts
+* Vulnerability detection
+* Secure code analysis
+* Python software architecture
+* Security rule development
+* Severity and risk classification
+* CWE and OWASP categorization
+* Vulnerability remediation guidance
+* Security reporting
+* Historical vulnerability tracking
+* Scan comparison and trend analysis
+* Security automation
+* DevSecOps-oriented tooling
+
+The project has also given me experience refactoring a growing security application into smaller, maintainable modules with clear responsibilities.
+
+---
+
+## 🚀 Current Capabilities
+
+SecureScan includes functionality for:
+
+### 🔍 Security Scanning
+
+* Recursive file and directory scanning
+* File-type filtering
+* Pattern-based security detection
+* Credential and secret exposure detection
+* SQL injection pattern detection
+* Cross-Site Scripting (XSS) pattern detection
+* Suspicious and risky file identification
+
+### ⚠️ Risk Analysis
+
+* Severity classification
+* Confidence classification
+* CVSS-related risk scoring
+* Finding prioritization
+* Project-level security metrics
+
+### 🛡️ Security Classification
+
+* CWE mapping
+* OWASP category mapping
+* Security remediation guidance
+* Vulnerability drill-down reporting
+
+### 📊 Vulnerability Management
+
+* Finding fingerprinting
+* Vulnerability history tracking
+* Scan comparison
+* Historical progress tracking
+* Vulnerability trend analysis
+* Scan statistics
+
+### 📄 Reporting
+
+SecureScan can generate multiple report formats, including:
+
+* HTML
+* JSON
+* CSV
+* TXT
+
+The HTML reporting system includes modular report components for:
+
+* Executive summaries
+* Security findings
+* CWE analysis
+* OWASP analysis
+* Remediation guidance
+* Risky-file analysis
+* Vulnerability history
+* Charts
+* Security metrics
+* Detailed file views
+* Vulnerability drill-down pages
+
+---
+
+## 🏗️ Project Architecture
+
+```text
 secure-scan/
+│
 ├── README.md
 ├── requirements.txt
+├── .gitignore
+│
 ├── src/
-│   └── scanner.py
+│   ├── scanner.py
+│   ├── scan_engine.py
+│   ├── scan_setup.py
+│   ├── patterns.py
+│   ├── rule_registry.py
+│   ├── severity.py
+│   ├── confidence.py
+│   ├── cvss.py
+│   ├── owasp.py
+│   ├── remediation.py
+│   ├── fingerprint.py
+│   ├── metrics.py
+│   ├── scan_statistics.py
+│   ├── scan_history.py
+│   ├── scan_comparison.py
+│   ├── trend_analysis.py
+│   ├── vulnerability_history.py
+│   ├── report_manager.py
+│   ├── html_report.py
+│   ├── csv_report.py
+│   ├── drilldown_pages.py
+│   ├── cwe_drilldown_pages.py
+│   ├── file_detail_pages.py
+│   │
+│   └── report_components/
+│       ├── __init__.py
+│       ├── header.py
+│       ├── executive.py
+│       ├── findings.py
+│       ├── cwe.py
+│       ├── owasp.py
+│       ├── remediation.py
+│       ├── risky_files.py
+│       ├── history.py
+│       ├── tables.py
+│       ├── charts.py
+│       ├── dashboard.py
+│       ├── styles.py
+│       └── scripts.py
+│
 ├── data/
 │   └── sample_log.txt
-├── reports/
+│
+├── tests/
+│   └── fixtures/
+│
+└── docs/
+    ├── examples/
+    └── images/
+```
 
-⚙️ Installation
+---
+
+## ⚙️ Installation
+
 Clone the repository:
+
+```bash
 git clone https://github.com/davidionclark8594-svg/secure-scan.git
+```
+
+Enter the project directory:
+
+```bash
 cd secure-scan
-Create virtual environment (optional but recommended):
+```
+
+Create a virtual environment:
+
+```bash
 python -m venv venv
+```
+
+Activate it on macOS/Linux:
+
+```bash
 source venv/bin/activate
+```
+
 Install dependencies:
+
+```bash
 pip install -r requirements.txt
+```
 
-▶️ Usage
-Run the scanner:
+---
+
+## ▶️ Running SecureScan
+
+Run SecureScan against a target directory:
+
+```bash
 python src/scanner.py --path data
+```
 
-📊 Example Output
-Line 2 | HIGH   | password | WARN Failed password attempt user=bob
-Line 3 | MEDIUM | sql      | ERROR SQL injection attempt detected
-Line 5 | HIGH   | token    | WARN Admin token exposed
+SecureScan analyzes the selected files, evaluates detected security findings, and generates reporting artifacts.
 
-📄 Reports Generated
-After running the scanner:
-* reports/scan_report.txt
-* reports/scan_report.json
+Generated reports are written to the `reports/` directory.
 
-🧠 Future Improvements
-* Recursive directory scanning
-* File type filtering
-* Integration with CI/CD pipelines
-* AI-based vulnerability classification
+---
 
-👨‍💻 Author
-Davidion ClarkAspiring Application Security Engineer | DevSecOps | AI + Security
+## 📊 Report Examples
 
-⚠️ Disclaimer
-This tool is for educational purposes only and is not intended for production security auditing.
+Sample output generated by SecureScan is available under:
 
+```text
+docs/examples/
+```
+
+Example formats include:
+
+```text
+sample_scan_report.html
+sample_scan_report.json
+sample_scan_report.csv
+sample_scan_report.txt
+```
+
+---
+
+## 🧱 Software Design
+
+As SecureScan expanded, the application was refactored from a more centralized implementation into dedicated modules.
+
+The current architecture separates responsibilities including:
+
+```text
+Scanning
+Detection Rules
+Risk Classification
+CWE / OWASP Mapping
+Remediation
+Metrics
+Historical Tracking
+Trend Analysis
+Report Generation
+HTML Presentation
+```
+
+This structure makes new detection rules, reporting capabilities, and security analysis features easier to add without concentrating the entire application in a single file.
+
+---
+
+## 🛣️ Planned Improvements
+
+Future development may include:
+
+* CI/CD pipeline integration
+* SARIF report generation
+* Expanded automated testing
+* Additional vulnerability detection rules
+* Configuration-based rule enablement
+* Finding suppression and baseline management
+* Improved source-code-aware analysis
+* Additional security metrics
+* Expanded DevSecOps integrations
+* Additional reporting and visualization capabilities
+
+---
+
+## 👨‍💻 Author
+
+**Davidion Clark**
+
+Aspiring Application Security Engineer
+Python | SAST | DevSecOps | Cloud Security | AI + Security
+
+---
+
+## ⚠️ Usage Notice
+
+SecureScan is a portfolio and security engineering project designed to demonstrate Application Security concepts and tooling.
+
+It should be used only against source code, files, and systems that you own or are explicitly authorized to assess.
+
+SecureScan is not intended to replace commercial SAST platforms, penetration testing, professional security reviews, or an organization's established security controls.
