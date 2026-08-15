@@ -145,6 +145,7 @@ def write_html_report(report_path, findings, risk_level, previous_scan, scan_his
                                   
 <html>
 <head>
+<meta charset="UTF-8">
 <title>Secure Scan Report</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
