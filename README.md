@@ -10,6 +10,11 @@ The project began as a small command-line scanner and has been progressively ref
 
 SecureScan demonstrates the engineering and security concepts commonly involved in modern Application Security programs.
 
+
+## 📊 Dashboard Preview
+
+![SecureScan Application Security Dashboard](docs/images/securescan-dashboard-preview.png)
+
 ---
 
 ## 🎯 Project Goals
